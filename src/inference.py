@@ -1,11 +1,19 @@
 from diffusers import StableDiffusionPipeline
 import torch
+from PIL import Image
+import time
 
 class Inference:
     
-    def __init__(self, model_name: str="nota-ai/bk-sdm-small")->None:
-        self.__model_name: str = model_name
+    def __init__(self, repo_id: str="nota-ai/bk-sdm-small")->None:
+        self.__repo_id: str = repo_id
     
-    def text2image(self):
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        return StableDiffusionPipeline.from_pretrained(self.__model_name, torch_dtype=torch.float16, use_safetensors=True).to(device)
+    def text2image(self, prompt: str)->tuple[Image, float]:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        pipe = StableDiffusionPipeline.from_pretrained(self.__repo_id, torch_dtype=torch.float16, use_safetensors=True).to(device)
+        pipe.enable_attention_slicing()
+        start: float = time.time()
+        image = pipe(prompt).images[0]
+        end: float = time.time()
+        duration: float = end - start
+        return image, duration

@@ -1,4 +1,5 @@
 import streamlit as st
+from src.inference import Inference
 from io import BytesIO
 
 
@@ -27,10 +28,22 @@ def app():
 
     if submit:
         with st.spinner(text="Generating image ... It may take up to 1 hour."):
+            image, duration = Inference(option).text2image(prompt=user_input)
 
             buf = BytesIO()
+            image.save(buf, format="PNG")
             byte_im = buf.getvalue()
 
+            hours, rem = divmod(duration, 3600)
+            minutes, seconds = divmod(rem, 60)
+
+            st.success(
+                "Processing time: {:0>2}:{:0>2}:{:05.2f}.".format(
+                    int(hours), int(minutes), seconds
+                )
+            )
+
+            st.image(image)
 
             st.download_button(
                 label="Click here to download",
