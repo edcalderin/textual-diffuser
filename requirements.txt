@@ -1,0 +1,6 @@
+--extra-index-url https://download.pytorch.org/whl/cu128
+accelerate==1.8.1
+diffusers==0.34.0
+ruff==0.12.0
+streamlit==1.46.0
+torch==2.7.1+cu128
