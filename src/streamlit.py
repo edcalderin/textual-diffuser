@@ -5,8 +5,8 @@ from src.inference import Inference
 
 
 def app():
-    st.header("Text-to-image Web App")
-    st.subheader("Powered by Hugging Face")
+    st.header("TextualDiffuser")
+    st.subheader("Text2Image web app")
     user_input = st.text_area(
         "Enter your text prompt below and click the button to submit."
     )
