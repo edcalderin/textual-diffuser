@@ -1,6 +1,7 @@
+from io import BytesIO
+
 import streamlit as st
 from src.inference import Inference
-from io import BytesIO
 
 
 def app():
@@ -34,13 +35,11 @@ def app():
             image.save(buf, format="PNG")
             byte_im = buf.getvalue()
 
-            hours, rem = divmod(duration, 3600)
-            minutes, seconds = divmod(rem, 60)
+            hours, seconds = divmod(duration, 3600)
+            minutes, seconds = divmod(seconds, 60)
 
             st.success(
-                "Processing time: {:0>2}:{:0>2}:{:05.2f}.".format(
-                    int(hours), int(minutes), seconds
-                )
+                f"Processing time: {int(hours):0>2}:{int(minutes):0>2}:{seconds:05.2f}."
             )
 
             st.image(image)
