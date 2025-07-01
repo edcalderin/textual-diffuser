@@ -69,3 +69,8 @@ conda env remove -n textual_diffuser
 ## ✉️ Contact
 LinkedIn: https://www.linkedin.com/in/erick-calderin-5bb6963b/  
 e-mail: edcm.erick@gmail.com
+
+## Enjoyed this content?
+Explore more of my work on [Medium](https://medium.com/@erickcalderin) 
+
+I regularly share insights, tutorials, and reflections on tech, AI, and more. Your feedback and thoughts are always welcome!
