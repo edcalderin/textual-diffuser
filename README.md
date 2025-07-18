@@ -24,8 +24,8 @@ TextualDiffuser is a text-to-image generation tool powered by Stable Diffusion. 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/edcalderin/TextualDiffuser.git
-cd TextualDiffuser
+git clone https://github.com/edcalderin/textual-diffuser.git
+cd textual-diffuser
 ```
 
 ### 2. (Optional) Create and Activate Virtual Environment
